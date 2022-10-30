@@ -26,7 +26,7 @@ public class CatalogController : ControllerBase
         return Ok(list);
     }
 
-    [HttpGet("{id:lenght(24)}", Name = "GetProduct")]
+    [HttpGet("{id:length(24)}", Name = "GetProduct")]
     [ProducesResponseType(typeof(Product), (int) HttpStatusCode.OK)]
     [ProducesResponseType((int) HttpStatusCode.NotFound)]
     public async Task<ActionResult<Product>> GetById(string id)
@@ -64,7 +64,7 @@ public class CatalogController : ControllerBase
         return Ok(await repository.Update(product));
     }
 
-    [HttpDelete("{id:lenght(24)}", Name = "DeleteProduct")]
+    [HttpDelete("{id:length(24)}", Name = "DeleteProduct")]
     [ProducesResponseType(typeof(Product), (int) HttpStatusCode.OK)]
     public async Task<IActionResult> DeleteById(string id)
     {
