@@ -1,3 +1,5 @@
+using Discount.API.Entities;
+using Discount.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Discount.API.Controllers;
@@ -40,6 +42,6 @@ public class DiscountController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<Coupon>> DeleteDiscount(string productName)
     {
-        return Ok(await repository.DeelteDiscount(productName));
+        return Ok(await repository.DeleteDiscount(productName));
     }
 }
