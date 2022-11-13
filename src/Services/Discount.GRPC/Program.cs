@@ -1,3 +1,4 @@
+using System.Reflection;
 using Discount.GRPC.Extensions;
 using Discount.GRPC.Repositories;
 using Discount.GRPC.Services;
@@ -9,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddGrpc();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
 
 var app = builder.Build();

@@ -1,3 +1,4 @@
+using AutoMapper;
 using Discount.GRPC.Protos;
 using Discount.GRPC.Repositories;
 using Grpc.Core;
@@ -7,11 +8,13 @@ namespace Discount.GRPC.Services;
 public class DiscountService : DiscountProtoService.DiscountProtoServiceBase
 {
     private readonly IDiscountRepository repository;
+    private readonly IMapper mapper;
     private readonly ILogger<DiscountService> logger;
 
-    public DiscountService(IDiscountRepository repository, ILogger<DiscountService> logger)
+    public DiscountService(IDiscountRepository repository, IMapper mapper, ILogger<DiscountService> logger)
     {
         this.repository = repository;
+        this.mapper = mapper;
         this.logger = logger;
     }
 
