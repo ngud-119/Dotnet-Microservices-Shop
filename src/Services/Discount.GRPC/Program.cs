@@ -2,6 +2,7 @@ using System.Reflection;
 using Discount.GRPC.Extensions;
 using Discount.GRPC.Repositories;
 using Discount.GRPC.Services;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddGrpc();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    // Setup a HTTP/2 endpoint without TLS.
+    options.ListenLocalhost(5003, o => o.Protocols =
+        HttpProtocols.Http2);
+});
 
 var app = builder.Build();
 
