@@ -20,25 +20,25 @@ services:
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
       context: .
-      dockerfile: src/Services/Catalog.API/Dockerfile
+      dockerfile: src/Catalog.API/Dockerfile
 
   basket.api:
     image: ${DOCKER_REGISTRY-}basketapi
     build:
       context: .
-      dockerfile: src/Services/Basket.API/Dockerfile
+      dockerfile: src/Basket.API/Dockerfile
   
   discount.api:
     image: ${DOCKER_REGISTRY-}discountapi
     build:
       context: .
-      dockerfile: src/Services/Discount.API/Dockerfile
+      dockerfile: src/Discount.API/Dockerfile
 
   discount.grpc:
     image: ${DOCKER_REGISTRY-}discountgrpc
     build:
       context: .
-      dockerfile: src/Services/Discount.GRPC/Dockerfile
+      dockerfile: src/Discount.GRPC/Dockerfile
 
 volumes:
   mongo_data:

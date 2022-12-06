@@ -4,10 +4,10 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["src/Services/Catalog.API/Catalog.API.csproj", "src/Services/Catalog.API/"]
-RUN dotnet restore "src/Services/Catalog.API/Catalog.API.csproj"
+COPY ["src/Catalog.API/Catalog.API.csproj", "src/Catalog.API/"]
+RUN dotnet restore "src/Catalog.API/Catalog.API.csproj"
 COPY . .
-WORKDIR "/src/src/Services/Catalog.API/"
+WORKDIR "/src/src/Catalog.API/"
 RUN dotnet build "Catalog.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
