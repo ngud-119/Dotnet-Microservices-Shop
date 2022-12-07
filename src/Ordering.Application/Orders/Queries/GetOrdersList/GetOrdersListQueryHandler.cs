@@ -6,7 +6,7 @@ namespace Ordering.Application.Orders.Queries.GetOrdersList;
 
 public record GetOrdersListQuery : IRequest<List<OrdersVm>>
 {
-    public string Username { get; set; }
+    public string Username { get; set; } = null!;
 }
 
 public class GetOrdersListQueryHandler : IRequestHandler<GetOrdersListQuery, List<OrdersVm>>
