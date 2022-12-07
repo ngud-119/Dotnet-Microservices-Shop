@@ -2,7 +2,7 @@ using System.Reflection;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Ordering.Application.Behaviours;
+using Ordering.Application.Common.Behaviours;
 
 namespace Ordering.Application;
 
