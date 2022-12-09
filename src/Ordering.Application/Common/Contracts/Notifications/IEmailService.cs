@@ -1,6 +1,6 @@
 using Ordering.Application.Common.Models;
 
-namespace Ordering.Application.Common.Contracts.Infrastructure;
+namespace Ordering.Application.Common.Contracts.Notifications;
 
 public interface IEmailService
 {

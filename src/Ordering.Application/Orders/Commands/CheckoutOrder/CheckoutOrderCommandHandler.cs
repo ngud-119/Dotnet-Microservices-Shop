@@ -1,7 +1,7 @@
 using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using Ordering.Application.Common.Contracts.Infrastructure;
+using Ordering.Application.Common.Contracts.Notifications;
 using Ordering.Application.Common.Contracts.Persistence;
 using Ordering.Application.Common.Models;
 using Ordering.Domain.Entities;
