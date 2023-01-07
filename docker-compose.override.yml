@@ -74,8 +74,6 @@ services:
       - "CacheSettings:ConnectionString=basketdb:6379"
       - "GrpcSettings:DiscountUrl=http://discount.grpc"
     depends_on:
-      - basketdb
-    ports:
       - "8001:80"
   
   discount.api:
@@ -97,3 +95,13 @@ services:
       - discountdb
     ports:
       - "8003:80"
+
+  ordering.api:
+    container_name: ordering.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:OrderingConnectionStrings=Server=orderdb;Database=OrderDb;User Id=admin;Password=admin1234"
+    depends_on:
+      - orderdb
+    ports:
+      - "8004:80"
