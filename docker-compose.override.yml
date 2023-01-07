@@ -30,7 +30,7 @@ services:
   orderdb:
     container_name: orderdb
     environment:
-      - MSSQL_SA_PASSWORD==admin1234
+      - MSSQL_SA_PASSWORD=StrongPassword1234!
       - ACCEPT_EULA=Y
     restart: always
     ports:
@@ -74,6 +74,8 @@ services:
       - "CacheSettings:ConnectionString=basketdb:6379"
       - "GrpcSettings:DiscountUrl=http://discount.grpc"
     depends_on:
+      - basketdb
+    ports:
       - "8001:80"
   
   discount.api:
@@ -100,7 +102,7 @@ services:
     container_name: ordering.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "ConnectionStrings:OrderingConnectionStrings=Server=orderdb;Database=OrderDb;User Id=admin;Password=admin1234"
+      - "ConnectionStrings:OrderingConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=StrongPassword1234!"
     depends_on:
       - orderdb
     ports:
