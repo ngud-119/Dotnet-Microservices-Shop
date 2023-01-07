@@ -1,6 +1,7 @@
 using Basket.API.GrpcService;
 using Basket.API.Repositories;
 using Discount.GRPC.Protos;
+using MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,12 @@ builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
     opt.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"])
 );
 builder.Services.AddScoped<DiscountGrpcService>();
+
+builder.Services.AddMassTransit(config => {
+    config.UsingRabbitMq((ctx, cfg) => {
+        cfg.Host("amqp://guest:guest@localhost:5672");
+    });
+});
 
 var app = builder.Build();
 
