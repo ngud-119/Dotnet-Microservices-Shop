@@ -18,4 +18,8 @@
     </Protobuf>
   </ItemGroup>
 
+   <ItemGroup>
+     <ProjectReference Include="..\EventBus.Messages\EventBus.Messages.csproj" />
+   </ItemGroup>
+
 </Project>
