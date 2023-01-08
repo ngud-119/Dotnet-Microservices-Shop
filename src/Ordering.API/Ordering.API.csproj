@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Ordering.Application\Ordering.Application.csproj" />
     <ProjectReference Include="..\Ordering.Infrastructure\Ordering.Infrastructure.csproj" />
+    <ProjectReference Include="..\EventBus.Messages\EventBus.Messages.csproj" />
   </ItemGroup>
 
 </Project>
