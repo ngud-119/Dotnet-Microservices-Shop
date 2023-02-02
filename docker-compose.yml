@@ -52,6 +52,12 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
 
+  ocelotapi.gateway:
+    image: ${DOCKER_REGISTRY-}ocelotapi.gateway
+    build:
+      context: .
+      dockerfile: src/OcelotApi.Gateway/Dockerfile
+
 volumes:
   mongo_data:
   portainer_data:
