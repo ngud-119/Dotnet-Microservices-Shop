@@ -15,7 +15,8 @@
         "GET",
         "POST",
         "PUT"
-      ]
+      ],
+      "FileCacheOptions": { "TltSeconds": 30 }
     },
     {
       "DownstreamPathTemplate": "/api/v1/Catalog/{id}",
