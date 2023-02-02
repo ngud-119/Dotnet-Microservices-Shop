@@ -11,7 +11,11 @@
         }
       ],
       "UpstreamPathTemplate": "/Catalog",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT"
+      ]
     },
     {
       "DownstreamPathTemplate": "/api/v1/Catalog/{id}",
@@ -23,7 +27,10 @@
         }
       ],
       "UpstreamPathTemplate": "/Catalog/{id}",
-      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+      "UpstreamHttpMethod": [
+        "GET",
+        "DELETE"
+      ]
     },
     {
       "DownstreamPathTemplate": "/api/v1/Catalog/GetProductByCategory/{category}",
@@ -35,9 +42,10 @@
         }
       ],
       "UpstreamPathTemplate": "/api/v1/Catalog/GetProductByCategory/{category}",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamHttpMethod": [
+        "GET"
+      ]
     },
-
     // Basket API
     {
       "DownstreamPathTemplate": "/api/v1/Basket/{userName}",
@@ -49,7 +57,10 @@
         }
       ],
       "UpstreamPathTemplate": "/Basket/{userName}",
-      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+      "UpstreamHttpMethod": [
+        "GET",
+        "DELETE"
+      ]
     },
     {
       "DownstreamPathTemplate": "/api/v1/Basket/",
@@ -61,7 +72,9 @@
         }
       ],
       "UpstreamPathTemplate": "/Basket/",
-      "UpstreamHttpMethod": [ "POST" ]
+      "UpstreamHttpMethod": [
+        "POST"
+      ]
     },
     {
       "DownstreamPathTemplate": "/api/v1/Basket/Checkout",
@@ -73,9 +86,17 @@
         }
       ],
       "UpstreamPathTemplate": "/Basket/Checkout",
-      "UpstreamHttpMethod": [ "POST" ]
+      "UpstreamHttpMethod": [
+        "POST"
+      ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "4s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
     },
-
     // Discount API
     {
       "DownstreamPathTemplate": "/api/v1/Discount/{productName}",
@@ -87,7 +108,10 @@
         }
       ],
       "UpstreamPathTemplate": "/Discount/{productName}",
-      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+      "UpstreamHttpMethod": [
+        "GET",
+        "DELETE"
+      ]
     },
     {
       "DownstreamPathTemplate": "/api/v1/Discount",
@@ -99,9 +123,11 @@
         }
       ],
       "UpstreamPathTemplate": "/Discount",
-      "UpstreamHttpMethod": [ "PUT", "POST" ]
+      "UpstreamHttpMethod": [
+        "PUT",
+        "POST"
+      ]
     },
-
     // Order API
     {
       "DownstreamPathTemplate": "/api/v1/Order/{userName}",
@@ -113,7 +139,9 @@
         }
       ],
       "UpstreamPathTemplate": "/Order/{userName}",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamHttpMethod": [
+        "GET"
+      ]
     }
   ],
   "GlobalConfiguration": {
