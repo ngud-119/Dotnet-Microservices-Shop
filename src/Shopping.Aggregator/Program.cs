@@ -1,6 +1,18 @@
+using Shopping.Aggregator.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddHttpClient<ICatalogService, CatalogService>(e =>
+    e.BaseAddress = new Uri(builder.Configuration["ApiSettings:CatalogUrl"]!)
+);
+
+builder.Services.AddHttpClient<IBasketService, BasketService>(e =>
+    e.BaseAddress = new Uri(builder.Configuration["ApiSettings:BasketUrl"]!)
+);
+
+builder.Services.AddHttpClient<IOrderService, OrderService>(e =>
+    e.BaseAddress = new Uri(builder.Configuration["ApiSettings:OrderingUrl"]!)
+);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
