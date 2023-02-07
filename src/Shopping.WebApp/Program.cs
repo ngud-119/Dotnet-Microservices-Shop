@@ -1,20 +1,22 @@
 using Microsoft.EntityFrameworkCore;
 using Shopping.WebApp.Data;
 using Shopping.WebApp.Repositories;
+using Shopping.WebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add database dependecy
-builder.Services.AddDbContext<ApplicationDbContext>(opt =>
+builder.Services.AddHttpClient<ICatalogService, CatalogService>(opt =>
 {
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    opt.BaseAddress = new Uri(builder.Configuration["ApiSettings:GatewayAddress"]!);
 });
-
-// Add repository dependecies
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<ICartRepository, CartRepository>();
-builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-builder.Services.AddScoped<IContactRepository, ContactRepository>();
+builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
+{
+    opt.BaseAddress = new Uri(builder.Configuration["ApiSettings:GatewayAddress"]!);
+});
+builder.Services.AddHttpClient<IOrderService, OrderService>(opt =>
+{
+    opt.BaseAddress = new Uri(builder.Configuration["ApiSettings:GatewayAddress"]!);
+});
 
 builder.Services.AddRazorPages();
 
