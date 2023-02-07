@@ -1,23 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shopping.WebApp.Repositories;
+using Shopping.WebApp.Models;
+using Shopping.WebApp.Services;
 
 namespace Shopping.WebApp.Pages;
 
 public class OrderModel : PageModel
 {
-    private readonly IOrderRepository _orderRepository;
+    private readonly IOrderService orderService;
 
-    public OrderModel(IOrderRepository orderRepository)
+    public OrderModel(IOrderService orderService)
     {
-        _orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
+        this.orderService = orderService;
     }
 
-    public IEnumerable<Entities.Order> Orders { get; set; } = new List<Entities.Order>();
+    public IEnumerable<OrderResponseModel> Orders { get; set; } = new List<OrderResponseModel>();
 
     public async Task<IActionResult> OnGetAsync()
     {
-        Orders = await _orderRepository.GetOrdersByUserName("test");
+        Orders = await orderService.GetOrdersByUserName("test");
 
         return Page();
     }
