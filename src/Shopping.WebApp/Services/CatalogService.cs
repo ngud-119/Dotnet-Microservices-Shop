@@ -38,7 +38,7 @@ public class CatalogService : ICatalogService
         return await response.ReadContentAs<List<CatalogModel>>();
     }
 
-    public async Task<IEnumerable<CatalogModel>> GetGatalog()
+    public async Task<IEnumerable<CatalogModel>> GetCatalog()
     {
         var response = await httpClient.GetAsync("/Catalog");
         return await response.ReadContentAs<List<CatalogModel>>();
