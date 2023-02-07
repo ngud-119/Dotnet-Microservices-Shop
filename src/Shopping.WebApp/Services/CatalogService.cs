@@ -1,3 +1,4 @@
+using Shopping.WebApp.Extensions;
 using Shopping.WebApp.Models;
 
 namespace Shopping.WebApp.Services;
@@ -13,22 +14,33 @@ public class CatalogService : ICatalogService
 
     public async Task<CatalogModel> CreateCatalog(CatalogModel model)
     {
-        var response = await httpClient.GetAsync("/api/v1/Catalog");
-        return await response.ReadContentAs
+        var response = await httpClient.PostAsJson($"/Catalog", model);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return await response.ReadContentAs<CatalogModel>();
+        }
+        else
+        {
+            throw new Exception("Something went wrong when calling the api.");
+        }
     }
 
-    public Task<CatalogModel> GetCatalog(string id)
+    public async Task<CatalogModel> GetCatalog(string id)
     {
-        throw new NotImplementedException();
+        var response = await httpClient.GetAsync($"/Catalog/{id}");
+        return await response.ReadContentAs<CatalogModel>();
     }
 
-    public Task<IEnumerable<CatalogModel>> GetCatalogByCategory(string category)
+    public async Task<IEnumerable<CatalogModel>> GetCatalogByCategory(string category)
     {
-        throw new NotImplementedException();
+        var response = await httpClient.GetAsync($"/Catalog/GetProductByCategory/{category}");
+        return await response.ReadContentAs<List<CatalogModel>>();
     }
 
-    public Task<IEnumerable<CatalogModel>> GetGatalog()
+    public async Task<IEnumerable<CatalogModel>> GetGatalog()
     {
-        throw new NotImplementedException();
+        var response = await httpClient.GetAsync("/Catalog");
+        return await response.ReadContentAs<List<CatalogModel>>();
     }
 }
