@@ -1,6 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using Shopping.WebApp.Data;
-using Shopping.WebApp.Repositories;
 using Shopping.WebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,22 +35,5 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
-
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var loggerFactory = services.GetRequiredService<ILoggerFactory>();
-
-    try
-    {
-        var context = services.GetRequiredService<ApplicationDbContext>();
-        ApplicationDbContextSeed.SeedAsync(context, loggerFactory).Wait();
-    }
-    catch (Exception exception)
-    {
-        var logger = loggerFactory.CreateLogger<Program>();
-        logger.LogError(exception, "An error occurred seeding the DB.");
-    }
-}
 
 app.Run();
