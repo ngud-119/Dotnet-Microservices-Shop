@@ -64,6 +64,12 @@ services:
       context: .
       dockerfile: src/Shopping.Aggregator/Dockerfile
 
+  shopping.webapp:
+    image: ${DOCKER_REGISTRY-}shopping.webapp
+    build:
+      context: .
+      dockerfile: src/Shopping.WebApp/Dockerfile
+
 volumes:
   mongo_data:
   portainer_data:
