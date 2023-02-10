@@ -73,3 +73,6 @@ Docker Compose establishment with all microservices on docker;
 * Containerization of microservices
 * Containerization of databases
 * Override Environment variables
+
+# References
+> The complete course can be found here [page](https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet). 
